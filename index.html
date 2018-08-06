@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="src/assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="src/assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <title>Vue.js Todo</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="/dist/build.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDih5FVQsfnUzvTuFuhmC0QhgcxfG62HV4",
+        authDomain: "vue-todo-app-c885d.firebaseapp.com",
+        databaseURL: "https://vue-todo-app-c885d.firebaseio.com",
+        projectId: "vue-todo-app-c885d",
+        storageBucket: "vue-todo-app-c885d.appspot.com",
+        messagingSenderId: "836283466945"
+      };
+      firebase.initializeApp(config);
+    </script>
+  </body>
+</html>
