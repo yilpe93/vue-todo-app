@@ -5,33 +5,46 @@
       <i class="addBtn fa fa-plus" aria-hidden="true"></i>
     </span>
 
-    <!-- <modal v-if="showModal" @close="showModal = false">
-      <h3 slot="header">경고</h3>
-      <span slot="footer" @click="showModal = false">할 일을 입력하세요.
-        <i class="closeModalBtn fa fa-times" aria-hidden="true"></i>
-      </span>
-    </modal> -->
+    <ModalComponent v-if="showModal">
+      <h3 slot="header">경고!</h3>
+      <div slot="body">할 일을 입력하세요.</div>
+      <div slot="footer">
+        <button class="modal-default-button" @click="close">Close</button>
+      </div>
+    </ModalComponent>
   </div>
 </template>
 
 <script>
+import ModalComponent from'./common/ModalComponent';
+// import { mapMutations } from 'vuex';
+
 export default {
   data() {
     return {
       newTodoItem: '',
+      showModal: false
     }
   },
   methods: {
     addTodo() {
       if (this.newTodoItem !== '') {
         const value = this.newTodoItem && this.newTodoItem.trim();
-        this.$emit('addTodo', value);
+        this.$store.commit('addTodoItem', value);
         this.clearInput();
+      } else {
+        this.showModal = !this.showModal;
       }
     },
     clearInput() {
       this.newTodoItem = '';
+    },
+    close() {
+      this.showModal = false;
     }
+  },
+  components: {
+    ModalComponent
   }
 }
 </script>
@@ -56,6 +69,7 @@ input:focus {
   display: inline-block;
   width: 3rem;
   border-radius: 0 5px 5px 0;
+  cursor: pointer;
 }
 .addBtn {
   color: white;

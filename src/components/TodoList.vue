@@ -1,10 +1,10 @@
 <template>
   <section>
     <transition-group name="list" tag="ul">
-      <li v-for="(todoItem, index) in propsdata" :key="todoItem" class="shadow">
+      <li v-for="(todoItem, index) in getTodoItems" :key="todoItem" class="shadow">
         <i class="checkBtn fa fa-check" aria-hidden="true"></i>
         {{ todoItem }}
-        <span class="removeBtn" type="button" @click="removeTodo(todoItem, index)">
+        <span class="removeBtn" type="button" @click="removeTodoItem(todoItem, index)">
           <i class="fa fa-trash-o" aria-hidden="true"></i>
         </span>
       </li>
@@ -13,13 +13,17 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex';
+
 export default {
-  props: ['propsdata'],
-  methods: {
-    removeTodo(todoItem, index) {
-      this.$emit('removeTodo', todoItem, index);
+  name: "TodoList",
+  computed: mapGetters(['getTodoItems']),
+  methods: mapMutations(['removeTodoItem']),
+  created() {
+    for (var i = 0; i < localStorage.length; i++) {
+      this.getTodoItems.push(localStorage.key(i));
     }
-  }
+  },
 }
 </script>
 
@@ -50,7 +54,6 @@ export default {
     color: #de4343;
     cursor: pointer;
   }
-
 
   .list-item {
     display: inline-block;

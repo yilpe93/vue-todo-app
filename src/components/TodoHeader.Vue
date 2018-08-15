@@ -1,8 +1,24 @@
 <template>
   <header>
-    <h1>TODO it!</h1>
-  </header>
+    <h1>TODO it! {{ msg }}</h1>
+  </header>  
 </template>
+
+<script>
+import { mapGetters } from 'vuex';
+
+export default {
+  name: 'TodoHeader',
+  data() {
+    return {
+      msg: '+ Vuex'
+    }
+  },
+  created() {
+    console.log(this.$store);
+  },
+}  
+</script>
 
 <style scoped>
   h1 {
