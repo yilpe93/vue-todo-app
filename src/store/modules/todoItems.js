@@ -19,9 +19,9 @@ const mutations = {
     localStorage.setItem(item, item);
   },
   removeTodoItem(state, obj) {
-    console.log(obj);
+    // console.log(obj);
     state.todoItems.splice(obj.index, 1);
-    localStorage.removeItem(obj.item);
+    localStorage.removeItem(obj.todoItem);
   },
   removeAllItems(state) {
     state.todoItems = [];

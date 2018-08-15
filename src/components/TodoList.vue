@@ -4,7 +4,7 @@
       <li v-for="(todoItem, index) in getTodoItems" :key="todoItem" class="shadow">
         <i class="checkBtn fa fa-check" aria-hidden="true"></i>
         {{ todoItem }}
-        <span class="removeBtn" type="button" @click="removeTodoItem(todoItem, index)">
+        <span class="removeBtn" type="button" @click="removeTodoItem({todoItem, index})">
           <i class="fa fa-trash-o" aria-hidden="true"></i>
         </span>
       </li>
